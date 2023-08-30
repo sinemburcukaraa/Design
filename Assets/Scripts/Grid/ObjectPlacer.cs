@@ -12,6 +12,7 @@ public class ObjectPlacer : MonoBehaviour
     {
         GameObject newObject = Instantiate(prefab);
         newObject.transform.position = position;
+        newObject.transform.GetChild(0).GetComponent<ObjectManager>().placed = true;
         placedGameObjects.Add(newObject);
         return placedGameObjects.Count - 1;
     }

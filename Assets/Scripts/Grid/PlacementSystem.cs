@@ -41,6 +41,9 @@ public class PlacementSystem : MonoBehaviour
         gridVisualization.SetActive(false);
         floorData = new GridData();
         furnitureData = new GridData();
+
+        furnitureData.AddObjectAt(new Vector3Int(5, 0, -5), new Vector2Int(2, 10), 5, 5);
+        furnitureData.AddObjectAt(new Vector3Int(-5, 0, 5), new Vector2Int(10, 4), 6, 6);
     }
 
     public void StartPlacement(int ID)
