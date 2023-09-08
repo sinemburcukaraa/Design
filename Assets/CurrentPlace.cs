@@ -11,8 +11,11 @@ public class CurrentPlace : MonoBehaviour
     {
         if (other.gameObject.tag == "Obj")
         {
+            Debug.Log("temas");
+
             if (other.gameObject.GetComponent<ObjectManager>().id == id && other.gameObject.GetComponent<ObjectManager>().placed)
             {
+                Debug.Log("temas" + id);
                 CurrentPlaceManager.instance.CurrentPlaceScore++;
             }
         }

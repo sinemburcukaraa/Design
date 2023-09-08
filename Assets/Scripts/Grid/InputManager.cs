@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
+
     [SerializeField]
     private Camera sceneCamera;
 

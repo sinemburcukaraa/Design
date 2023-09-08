@@ -15,21 +15,21 @@ MonoBehaviour:
   objectsData:
   - <Name>k__BackingField: Floor
     <ID>k__BackingField: 0
-    <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 7111418133946002212, guid: f88b7a8f520d64b428ec37522c64cac7, type: 3}
-  - <Name>k__BackingField: Chair
+    <Size>k__BackingField: {x: 5, y: 5}
+    <Prefab>k__BackingField: {fileID: 6800530668274182942, guid: 4e2e9e1063dc4444b916af28ac5ca0ba, type: 3}
+  - <Name>k__BackingField: dolap
     <ID>k__BackingField: 1
-    <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 7111418133946002212, guid: f88b7a8f520d64b428ec37522c64cac7, type: 3}
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 761216950934238006, guid: 16997870f0d608041b5829a4d183832f, type: 3}
   - <Name>k__BackingField: Bigbad
     <ID>k__BackingField: 2
-    <Size>k__BackingField: {x: 2, y: 2}
-    <Prefab>k__BackingField: {fileID: 3915663016864255540, guid: 8ada982b9f119e84c97d15631be3b862, type: 3}
+    <Size>k__BackingField: {x: 3, y: 6}
+    <Prefab>k__BackingField: {fileID: 4043026717704786671, guid: 53ed529ceaf310c4db4769868da95561, type: 3}
   - <Name>k__BackingField: Table
     <ID>k__BackingField: 3
-    <Size>k__BackingField: {x: 2, y: 1}
-    <Prefab>k__BackingField: {fileID: 3864465342533384564, guid: f5c5f22a6ad623244a107225316aeb0c, type: 3}
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 357454724227585379, guid: 44d6963cf40241a448dee5a21b4a353d, type: 3}
   - <Name>k__BackingField: DNM
     <ID>k__BackingField: 4
-    <Size>k__BackingField: {x: 2, y: 4}
-    <Prefab>k__BackingField: {fileID: 5886424248630451152, guid: 6b0f03b8605f6384ea55f3b965b26431, type: 3}
+    <Size>k__BackingField: {x: 3, y: 2}
+    <Prefab>k__BackingField: {fileID: 119539774055891221, guid: 159fd5433f238bb47819bd0104411fa7, type: 3}

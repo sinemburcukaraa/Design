@@ -7,7 +7,7 @@ public class ObjectPlacer : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> placedGameObjects = new List<GameObject>();
-
+    public InputManager inputManager; public PlacementSystem placementSystem; public PreviewSystem previewSystem;
     public int PlaceObject(GameObject prefab, Vector3 position)
     {
         GameObject newObject = Instantiate(prefab);
@@ -25,4 +25,17 @@ public class ObjectPlacer : MonoBehaviour
         Destroy(placedGameObjects[gameObjectIndex]);
         placedGameObjects[gameObjectIndex] = null;
     }
+    //internal void RemoveRelocate(int gameObjectIndex)
+    //{
+    //    if (placedGameObjects.Count <= gameObjectIndex
+    //        || placedGameObjects[gameObjectIndex] == null)
+    //        return;
+    //    Destroy(placedGameObjects[gameObjectIndex]);
+    //    placedGameObjects[gameObjectIndex] = null;
+    //    previewSystem.ApplyFeedbackToPreview(true, 1);
+    //    placementSystem.StartPlacement(gameObjectIndex);
+
+    //    Debug.Log("girdi");
+    //}
+
 }

@@ -66,7 +66,7 @@ public class PreviewSystem : MonoBehaviour
         if (previewObject != null)
         {
             MovePreview(position);
-            ApplyFeedbackToPreview(validity);
+            ApplyFeedbackToPreview(validity ,0.5f);
 
         }
 
@@ -74,11 +74,11 @@ public class PreviewSystem : MonoBehaviour
         ApplyFeedbackToCursor(validity);
     }
 
-    private void ApplyFeedbackToPreview(bool validity)
+    public void ApplyFeedbackToPreview(bool validity , float value)
     {
         Color c = validity ? Color.white : Color.red;
 
-        c.a = 0.5f;
+        c.a = value;
         previewMaterialInstance.color = c;
     }
 
@@ -108,5 +108,11 @@ public class PreviewSystem : MonoBehaviour
         cellIndicator.SetActive(true);
         PrepareCursor(Vector2Int.one);
         ApplyFeedbackToCursor(false);
+    } 
+    internal void StartRelocateRemovePreview()
+    {
+        cellIndicator.SetActive(true);
+        PrepareCursor(Vector2Int.one);
+        ApplyFeedbackToCursor(true);
     }
 }

@@ -61,6 +61,14 @@ public class PlacementSystem : MonoBehaviour
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
     }
+    //public void StartRelocate()
+    //{
+    //    StopPlacement();
+    //    gridVisualization.SetActive(true);
+    //    buildingState = new RelocateObjects(grid, preview, floorData, furnitureData, objectPlacer, soundFeedback);
+    //    inputManager.OnClicked += PlaceStructure;
+    //    inputManager.OnExit += StopPlacement;
+    //}
 
     public void StartRemoving()
     {
