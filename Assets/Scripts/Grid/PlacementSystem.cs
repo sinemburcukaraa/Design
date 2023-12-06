@@ -45,7 +45,6 @@ public class PlacementSystem : MonoBehaviour
         furnitureData.AddObjectAt(new Vector3Int(5, 0, -5), new Vector2Int(2, 10), 5, 5);
         furnitureData.AddObjectAt(new Vector3Int(-5, 0, 5), new Vector2Int(10, 4), 6, 6);
     }
-
     public void StartPlacement(int ID)
     {
         StopPlacement();
@@ -69,16 +68,20 @@ public class PlacementSystem : MonoBehaviour
     //    inputManager.OnClicked += PlaceStructure;
     //    inputManager.OnExit += StopPlacement;
     //}
-
+    GameObject data;
     public void StartRemoving()
     {
         StopPlacement();
         gridVisualization.SetActive(true);
         buildingState = new RemovingState(grid, preview, floorData, furnitureData, objectPlacer, soundFeedback);
+        //objectPlacer.placedGameObjects.Remove();
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
     }
+    public void ListControl()
+    {
 
+    }
     private void PlaceStructure()
     {
         if (inputManager.IsPointerOverUI())
@@ -87,7 +90,6 @@ public class PlacementSystem : MonoBehaviour
         }
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
-
         buildingState.OnAction(gridPosition);
 
     }
@@ -101,7 +103,7 @@ public class PlacementSystem : MonoBehaviour
     //    return selectedData.CanPlaceObejctAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
     //}
 
-    private void StopPlacement()
+    public void StopPlacement()
     {
         soundFeedback.PlaySound(SoundType.Click);
         if (buildingState == null)
@@ -112,6 +114,7 @@ public class PlacementSystem : MonoBehaviour
         inputManager.OnExit -= StopPlacement;
         lastDetectedPosition = Vector3Int.zero;
         buildingState = null;
+        
     }
 
     private void Update()

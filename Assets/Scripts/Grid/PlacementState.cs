@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
 
 public class PlacementState : IBuildingState
@@ -48,10 +50,8 @@ public class PlacementState : IBuildingState
     {
         previewSystem.StopShowingPreview();
     }
-
     public void OnAction(Vector3Int gridPosition)
     {
-
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
         if (placementValidity == false)
         {
@@ -72,7 +72,6 @@ public class PlacementState : IBuildingState
 
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
     }
-
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
         GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ?

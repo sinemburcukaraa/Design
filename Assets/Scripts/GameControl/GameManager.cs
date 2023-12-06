@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         if (gameSit != GameSit.Started)
         {
             gameSit = GameSit.notStarted;
-            UIManager.instance.OpenStartPanel();
+            //UIManager.instance.OpenStartPanel();
 
             LevelManager.instance.NextLevel();
             if (Input.GetMouseButtonUp(0))

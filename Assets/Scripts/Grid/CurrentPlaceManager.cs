@@ -5,7 +5,7 @@ using UnityEngine;
 public class CurrentPlaceManager : MonoBehaviour
 {
     public float CurrentPlaceScore;
-    public float CurrentPlaceCount = 10;
+    public float CurrentPlaceCount;
     public static CurrentPlaceManager instance;
     private void Awake()
     {
@@ -13,7 +13,9 @@ public class CurrentPlaceManager : MonoBehaviour
     }
     public float CurrentPlaceScoreCalculate() 
     {
-        float score = CurrentPlaceScore / CurrentPlaceCount;
+        float score = (float)CurrentPlaceScore / CurrentPlaceCount; // 45 adet doðru alaný varsayalým
+        Debug.Log(CurrentPlaceScore);
+        Debug.Log(score);
         return score;
     }
 

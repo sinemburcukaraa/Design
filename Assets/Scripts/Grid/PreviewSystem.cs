@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
 
 public class PreviewSystem : MonoBehaviour
@@ -13,24 +15,46 @@ public class PreviewSystem : MonoBehaviour
     [SerializeField]
     private Material previewMaterialPrefab;
     private Material previewMaterialInstance;
-
+    public ObjectPlacer objectPlacer;
     private Renderer cellIndicatorRenderer;
-
+    public List<GameObject> nullObj = new List<GameObject>();
     private void Start()
     {
         previewMaterialInstance = new Material(previewMaterialPrefab);
         cellIndicator.SetActive(false);
         cellIndicatorRenderer = cellIndicator.GetComponentInChildren<Renderer>();
     }
-
+    GameObject lastObj, newObj;
     public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
     {
+        print("StartShowingPlacementPreview");
+        lastObj = newObj;
+        listControl();
         previewObject = Instantiate(prefab);
+        newObj = previewObject;
         PreparePreview(previewObject);
         PrepareCursor(size);
         cellIndicator.SetActive(true);
     }
+    public void listControl()
+    {
+        if (lastObj != null)
+        {
+            if (!objectPlacer.placedGameObjects.Contains(lastObj))
+            {
+                if (nullObj.Count==0)
+                {
+                    nullObj.Add(lastObj);
+                }
+                else
+                {
+                    nullObj.RemoveAt(0);
+                    nullObj.Add(lastObj);
 
+                }
+            }
+        }
+    }
     private void PrepareCursor(Vector2Int size)
     {
         if (size.x > 0 || size.y > 0)
@@ -57,8 +81,9 @@ public class PreviewSystem : MonoBehaviour
     public void StopShowingPreview()
     {
         cellIndicator.SetActive(false);
-        if (previewObject != null)
-            Destroy(previewObject);
+        previewObject.SetActive(false);
+        //if (previewObject != null)
+        //    Destroy(previewObject);
     }
 
     public void UpdatePosition(Vector3 position, bool validity)
@@ -66,7 +91,7 @@ public class PreviewSystem : MonoBehaviour
         if (previewObject != null)
         {
             MovePreview(position);
-            ApplyFeedbackToPreview(validity ,0.5f);
+            ApplyFeedbackToPreview(validity, 0.5f);
 
         }
 
@@ -74,7 +99,7 @@ public class PreviewSystem : MonoBehaviour
         ApplyFeedbackToCursor(validity);
     }
 
-    public void ApplyFeedbackToPreview(bool validity , float value)
+    public void ApplyFeedbackToPreview(bool validity, float value)
     {
         Color c = validity ? Color.white : Color.red;
 
@@ -108,7 +133,7 @@ public class PreviewSystem : MonoBehaviour
         cellIndicator.SetActive(true);
         PrepareCursor(Vector2Int.one);
         ApplyFeedbackToCursor(false);
-    } 
+    }
     internal void StartRelocateRemovePreview()
     {
         cellIndicator.SetActive(true);

@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using JetBrains.Annotations;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public GameObject winPanel, gameOverPanel, gamePanel, startPanel;
     public Image f›llAmount;
+    public GameObject correctImage, backImage;
     private void Awake()
     {
         if (!instance)
@@ -19,8 +21,13 @@ public class UIManager : MonoBehaviour
     public void OpenWinPanel()
     {
         winPanel.gameObject.SetActive(true);
-        FillAmountControl();
+        gamePanel.gameObject.SetActive(false);
+        DOVirtual.DelayedCall(0.2f,() => {
+            FillAmountControl();
+        });
+
     }
+
     public void OpengameOverPanel()
     {
         gameOverPanel.gameObject.SetActive(true);
@@ -29,6 +36,10 @@ public class UIManager : MonoBehaviour
     public void OpengamePanel()
     {
         gamePanel.gameObject.SetActive(true);
+        //correctImage.GetComponent<Image>().DOFillAmount(0, 1);
+        //backImage.GetComponent<Image>().DOFillAmount(0, 1);
+
+        backImage.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => { OpenStartPanel(); });
     }
 
     public void OpenStartPanel()
@@ -44,7 +55,8 @@ public class UIManager : MonoBehaviour
 
     public void FillAmountControl()
     {
-        f›llAmount.fillAmount = Mathf.Lerp(f›llAmount.fillAmount,CurrentPlaceManager.instance.CurrentPlaceScoreCalculate(), Time.deltaTime * 2);
+        f›llAmount.DOFillAmount(CurrentPlaceManager.instance.CurrentPlaceScoreCalculate(), 1);
+        //f›llAmount.fillAmount = Mathf.Lerp(f›llAmount.fillAmount, CurrentPlaceManager.instance.CurrentPlaceScoreCalculate(), Time.deltaTime * 2);
 
     }
 }
